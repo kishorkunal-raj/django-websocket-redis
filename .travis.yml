@@ -50,6 +50,8 @@ matrix:
     - env: DJANGO=2.1.5
       python: 3.4
 
+before_install:
+  - if [[ "$TRAVIS_CPU_ARCH" == "ppc64le" ]]; then sudo chown -R $USER:$GROUP ~/.cache/pip/wheels; fi
 install:
   - pip install -r examples/requirements.txt
   - pip install Django==$DJANGO
